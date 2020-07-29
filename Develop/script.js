@@ -58,7 +58,13 @@ function createPlanner() {
         row.append(hour);
 
         //text element for each row
-        var text = $(`<textarea type="text" id="${timeFormat}-text" class"col-10"></textarea>`)
+        var text = $(`<textarea type="text" id="${timeFormat}-text" class="col-10 description"></textarea>`)
+        row.append(text);
+
+        //button element for each row
+        var button = $(`<button class="saveBtn col-1" id="${timeFormat}"> Save Button </button>`)
+        row.append(button);
+        
 
         $('.container').append(row);
     }
