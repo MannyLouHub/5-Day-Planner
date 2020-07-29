@@ -33,29 +33,35 @@
 //     //else if currentTime < i class past
 //     //else class curent
 
-var innerHtml = `
-<div class="hour col-1">
-<p>9am</p>
-</div>
-<textarea type="text" id="9am" class="col-10">
-</textarea>
-<div class ="col-1">
-<button class= "saveBtn" time="#9am"> save</button>`;
+// var innerHtml = `
+// <div class="hour col-1">
+// <p>9am</p>
+// </div>
+// <textarea type="text" id="9am" class="col-10">
+// </textarea>
+// <div class ="col-1">
+// <button class= "saveBtn" time="#9am"> save</button>`;
 
 function createPlanner() {
     var minTime = 9
     var maxTime = 17
-    
 
-    for(i=minTime;i<maxTime;i++){
-    var row = $('<div></div>');
-    row.attr('class','row')
-    row.html(innerHtml);
+    // loop to create rows
+    for (i = minTime; i <= maxTime; i++) {
+        var row = $('<div></div>');
+        row.attr('class', 'row')
+        var time = moment(i, 'H');
+        var timeFormat = time.format('hA')
 
-    row.at
-    
-    $('.container').append(row);
-     }
+        // time element for each row
+        var hour = $(`<div class="hour col-1">${timeFormat}<div>`)
+        row.append(hour);
+
+        //text element for each row
+        var text = $(`<textarea type="text" id="${timeFormat}-text" class"col-10"></textarea>`)
+
+        $('.container').append(row);
+    }
 
 }
 
