@@ -1,28 +1,28 @@
 // $("button").on("click", function(){
-//     var timeID=$(this).attr("time");
-//     var usertask=$(timeID).val()
+//     let timeID=$(this).attr("time");
+//     let usertask=$(timeID).val()
 //     localStorage.setItem(timeID, usertask);
 //   })
-//   var nineAM = localStorage.getItem("#9am");
+//   let nineAM = localStorage.getItem("#9am");
 //   if(nineAM){
 //     $("#9am").val(nineAM);
 //   }
 
-//   for(var i = 9; i<17;i++){
+//   for(let i = 9; i<17;i++){
 //     //Get the current hour
 
-//     var amPm
+//     let amPm
 //     if(i>=12){
 //       amPm="pm";
 //     }
-//     var hour=i;
+//     let hour=i;
 //     if(i>12){
 //       hour -=12;
 //     }
 
-//     var targetID="#"+hour+amPm;
+//     let targetID="#"+hour+amPm;
 
-//     var className="future";
+//     let className="future";
 
 
 //     // $(targetId).addClass(className);
@@ -33,7 +33,7 @@
 //     //else if currentTime < i class past
 //     //else class curent
 
-// var innerHtml = `
+// let innerHtml = `
 // <div class="hour col-1">
 // <p>9am</p>
 // </div>
@@ -43,25 +43,26 @@
 // <button class= "saveBtn" time="#9am"> save</button>`;
 
 function createPlanner() {
-    var minTime = 20
-    var maxTime = 24
+    const minTime = 8
+    const maxTime = 24
 
     // loop to create rows
     for (i = minTime; i <= maxTime; i++) {
-        var row = $('<div></div>');
+        let row = $('<div></div>');
         row.attr('class', 'row')
-        var time = moment(i, 'H');
-        var timeFormat = time.format('hA')
+        let time = moment(i, 'H');
+        let timeFormat = time.format('hA')
 
         // time element for each row
-        var hour = $(`<div class="hour col-1">${timeFormat}<div>`)
+        let hour = $(`<div class="hour col-1">${timeFormat}<div>`)
         row.append(hour);
 
         //text element for each row
-        var text = $(`<textarea type="text" id="${timeFormat}-text" class="col-10 description"></textarea>`)
+        let text = $(`<textarea type="text" id="${timeFormat}-text" class="col-10 description"></textarea>`)
+        text.val(localStorage.getItem(timeFormat))
         row.append(text);
         //Color Changer for Passage of time
-        var currentTime = parseInt(moment().format('H'))
+        let currentTime = parseInt(moment().format('H'))
         if(currentTime > i){
             text.addClass("past")
         }
@@ -71,15 +72,17 @@ function createPlanner() {
         else {
             text.addClass("present") 
         }
-        //saving information to localstorage
-        
-        //
-  
-        
-
         //button element for each row
-        var button = $(`<button class="saveBtn col-1" id="${timeFormat}"> Save Button </button>`)
+        let button = $(`<button class="saveBtn col-1" id="${timeFormat}"> Save Button </button>`)
         row.append(button);
+
+        //saving information to localstorage
+                
+        $(button).on('click', function(event){
+            let textValue = text.val();
+            localStorage.setItem(timeFormat, textValue)
+        })
+
         
         $('.container').append(row);
 
@@ -88,7 +91,7 @@ function createPlanner() {
 }
 
 // function thePassageOfTime(){
-//     var currentTime = +moment().format('H');
+//     let currentTime = +moment().format('H');
 //     if(currentTime)
     
 
