@@ -43,8 +43,8 @@
 // <button class= "saveBtn" time="#9am"> save</button>`;
 
 function createPlanner() {
-    var minTime = 9
-    var maxTime = 17
+    var minTime = 20
+    var maxTime = 24
 
     // loop to create rows
     for (i = minTime; i <= maxTime; i++) {
@@ -60,15 +60,37 @@ function createPlanner() {
         //text element for each row
         var text = $(`<textarea type="text" id="${timeFormat}-text" class="col-10 description"></textarea>`)
         row.append(text);
+        //Color Changer for Passage of time
+        var currentTime = parseInt(moment().format('H'))
+        if(currentTime > i){
+            text.addClass("past")
+        }
+        else if(currentTime < i){
+            text.addClass("future")
+        }
+        else {
+            text.addClass("present") 
+        }
+        //saving information to localstorage
+        
+        //
+  
+        
 
         //button element for each row
         var button = $(`<button class="saveBtn col-1" id="${timeFormat}"> Save Button </button>`)
         row.append(button);
         
-
         $('.container').append(row);
-    }
 
+        
+    }
 }
 
+// function thePassageOfTime(){
+//     var currentTime = +moment().format('H');
+//     if(currentTime)
+    
+
+// start of program.
 createPlanner();
