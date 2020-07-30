@@ -1,14 +1,18 @@
 
 function createPlanner() {
-    const minTime = 9
-    const maxTime = 17
-
+    const minTime = 0
+    const maxTime = 9
+    
     // loop to create rows
-    for (i = minTime; i <= maxTime; i++) {
+    for (let i = minTime; i <= maxTime; i++) {
         let row = $('<div></div>');
         row.attr('class', 'row')
         let time = moment(i, 'H');
         let timeFormat = time.format('hA')
+
+        // setTimeout(() => {
+        //     console.log(`Iteration ${i}\nexample1: ${example1}\nexample2: ${example2}`);
+        // }, 1000);
 
         // time element for each row
         let hour = $(`<div class="hour col-1 d-flex justify-content-center align-items-center">${timeFormat}<div>`)
