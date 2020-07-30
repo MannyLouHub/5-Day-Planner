@@ -10,10 +10,6 @@ function createPlanner() {
         let time = moment(i, 'H');
         let timeFormat = time.format('hA')
 
-        // setTimeout(() => {
-        //     console.log(`Iteration ${i}\nexample1: ${example1}\nexample2: ${example2}`);
-        // }, 1000);
-
         // time element for each row
         let hour = $(`<div class="hour col-1 d-flex justify-content-center align-items-center">${timeFormat}<div>`)
         row.append(hour);
