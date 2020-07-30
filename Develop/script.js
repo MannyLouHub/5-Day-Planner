@@ -1,7 +1,7 @@
 
 function createPlanner() {
-    const minTime = 0
-    const maxTime = 9
+    const minTime = 9
+    const maxTime = 17
     
     // loop to create rows
     for (let i = minTime; i <= maxTime; i++) {
